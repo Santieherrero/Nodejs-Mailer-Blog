@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+var app = require('./../app');
+
+app.listen(8181, function () {
+	console.log("Mailer app node: ON\nLisening on port 8181...");
+});

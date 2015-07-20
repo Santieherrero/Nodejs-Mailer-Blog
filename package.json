@@ -4,11 +4,15 @@
   "description": "Mailer for contact form on jekyll app",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test.js"
   },
   "author": "Santiago E. Herrero Guardia",
   "license": "MIT",
   "dependencies": {
     "express": "^4.13.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "supertest": "^1.0.1"
   }
 }
