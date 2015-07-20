@@ -1,0 +1,14 @@
+{
+  "name": "MailerJekyll",
+  "version": "1.0.0",
+  "description": "Mailer for contact form on jekyll app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Santiago E. Herrero Guardia",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.1"
+  }
+}
