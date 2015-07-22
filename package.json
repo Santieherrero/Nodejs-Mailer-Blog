@@ -4,12 +4,15 @@
   "description": "Mailer for contact form on jekyll app",
   "main": "app.js",
   "scripts": {
-    "test": "mocha test.js"
+    "test": "mocha test.js",
+    "watch-test": "NODE_EVN=test mocha -w app.js test.js"
   },
   "author": "Santiago E. Herrero Guardia",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.13.1"
+    "express": "^4.13.1",
+    "nodemailer": "^1.4.0",
+    "xoauth2": "^1.1.0"
   },
   "devDependencies": {
     "mocha": "^2.2.5",
