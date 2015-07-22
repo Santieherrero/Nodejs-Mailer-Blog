@@ -1,9 +1,14 @@
-var express = require('express');
-var app = express();
+
+var express, app, emailer;
+
+express = require('express');
+app = express();
+// emailer = require('./controllers/emailer');
+
 
 app.get('/',function(request,response) {
-	response.send("Hello, World!!! OK");
-});
+  response.send('OK');
+})
 
 
 module.exports = app;
