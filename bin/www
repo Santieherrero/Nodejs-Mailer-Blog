@@ -1,9 +1,9 @@
 #!/usr/bin/env node
+var app, port;
 
-var app = require('./../app');
-var port = process.env.PORT || 8181;
-
+app = require('./../app');
+port = process.env.PORT || 3000;
 
 app.listen(port, function () {
-	console.log("Mailer app node: ON\nLisening on port 8181...");
+	 console.log('Server running on port %d', port); 
 });

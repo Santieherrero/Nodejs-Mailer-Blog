@@ -1,8 +1,11 @@
-var express = require('express');
-var app = express();
+var express, app;
 
-app.use(express.static('public'));
+express = require('express');
+app = express();
 
+app.get('/',function(request,response) {
+  response.send('OK');
+});
 
 
 module.exports = app;
