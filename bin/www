@@ -4,5 +4,5 @@ var app = require('./../app');
 var port = process.env.PORT || 3000;
 
 app.listen(port, function () {
-	if(port === 3000) { console.log("Mailer app node: ON\nLisening on port 3000..."); }
+	if(port === 3000) { console.log('Server running on port %d', port); }
 });
