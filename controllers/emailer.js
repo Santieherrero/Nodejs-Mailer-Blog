@@ -33,7 +33,7 @@ exports.check = function(req,res,next) {
 		 			if(gbody.success){ 
 		 				next();
 		 		  }else{
-		 		  	res.json(gbody);
+		 		  	res.status(400).json(gbody);
 		 		  }
  	 });
 	}
@@ -72,7 +72,7 @@ exports.sendEmail = function(req,res,next) {
     	res.status(400).json({message: error});
       return error;
     }    
-    // console.log(info); TODO : Log for emails on file server;
+    // console.log(info); // TODO : Log for emails on file server;
    	res.status(201).json({email_send: true}); 
 	});
 };

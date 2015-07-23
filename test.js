@@ -24,6 +24,7 @@ describe('Create a email on emailer path', function() {
 		 request(app)
 		 	.post('/mailer')
 		 	.send('name=&email=&url_user=&message=&g-recaptcha-response=')
+		 	.expect(400)
 		 	.expect({"success":false},done);
 	});
 
