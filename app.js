@@ -15,6 +15,6 @@ app.get('/',function(request,response) {
 });
 
 
-app.post('/mailer',emailer.check,emailer.sendEmail);
+// app.post('/mailer',emailer.check,emailer.sendEmail);
 
 module.exports = app;
