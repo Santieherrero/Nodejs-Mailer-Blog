@@ -2,7 +2,7 @@ var express, app, emailer;
 
 express = require('express');
 app = express();
-emailer = require('./controllers/emailer');
+// emailer = require('./controllers/emailer');
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
