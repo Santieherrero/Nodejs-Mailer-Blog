@@ -1,8 +1,11 @@
-var express, app, emailer;
+var express, app, emailer, bodyParser, urlencoded;
 
 express = require('express');
 app = express();
-// emailer = require('./controllers/emailer');
+emailer = require('./controllers/emailer');
+
+bodyParser = require('body-parser');
+urlencoded = bodyParser.urlencoded({ extended: false });
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -11,10 +14,10 @@ app.use(function(req, res, next) {
 });
 
 app.get('/',function(request,response) {
-  response.send('OK');
+  response.status(200).json({status: 'OK', awake: true});
 });
 
 
-// app.post('/mailer',emailer.check,emailer.sendEmail);
+app.post('/mailer',urlencoded,emailer.check,emailer.sendEmail);
 
 module.exports = app;
