@@ -1,8 +1,7 @@
-var request,app, nconf;
+var request,app;
 
 request = require('supertest');
 app = require('./app');
-nconf = require('./lib/nconf');
 
 describe('Request to the root path', function() {
 	it('Returns a 200 status code', function(done) {

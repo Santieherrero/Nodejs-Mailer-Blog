@@ -18,6 +18,6 @@ app.get('/',function(request,response) {
 });
 
 
-app.post('/mailer',urlencoded,emailer.check,emailer.sendEmail);
+app.post('/mailer',urlencoded,emailer.check,emailer.validate,emailer.sendEmail);
 
 module.exports = app;

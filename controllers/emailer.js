@@ -4,6 +4,7 @@ transporter = require('./../lib/transporter.js');
 resque = require('request');
 nconf = require('./../lib/nconf');
 
+
 /**
 * Check Captcha google
 */
@@ -12,7 +13,7 @@ exports.check = function(req,res,next) {
 	// Testing for now... need mockup
 	if(process.env.NODE_EVN === 'test'){
 		if(req.body["g-recaptcha-response"] === ""){
-			res.json({success: false})
+			res.status(400).json({success: false})
 		}else{
 			next()
 		}
@@ -30,7 +31,7 @@ exports.check = function(req,res,next) {
 		 			
 		 			gbody= JSON.parse(body);
 		 			
-		 			if(gbody.success){ 
+		 			if(gbody.success != "false"){ 
 		 				next();
 		 		  }else{
 		 		  	res.status(400).json(gbody);
@@ -41,17 +42,26 @@ exports.check = function(req,res,next) {
 
 
 /**
-* Send Email with data form
+* Validate input form of body response 
 */
-exports.sendEmail = function(req,res,next) {
-	
+exports.validate = function(req,res,next) {
 	var dataEmail = req.body;
 	
 	// Validation
 	if( !dataEmail.name || !dataEmail.email || !dataEmail.message){
-		res.sendStatus(400);
+		res.status(400).json({ not_valid: true });
 		return false;
 	}
+
+	next();
+}
+
+
+/**
+* Send Email with data form
+*/
+exports.sendEmail = function(req,res,next) {
+	var dataEmail = req.body;
 	
 	// Setup e-mail data
 	if(dataEmail["url_user"]){ 
