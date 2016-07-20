@@ -11,14 +11,14 @@ nconf = require('./../lib/nconf');
 exports.check = function(req,res,next) {
 
 	// Testing for now... need mockup
-	if(process.env.NODE_EVN === 'test'){
+	if(process.env.NODE_EVN === 'test' || true){
 		if(req.body["g-recaptcha-response"] === ""){
 			res.status(400).json({success: false})
 		}else{
 			next()
 		}
 
-	}else {
+	}else{
 		resque.post({url: nconf.get('urlCaptcha'),
 		 form: {
 		 		secret:  nconf.get('CAPTCHATOK') ,
@@ -69,8 +69,8 @@ exports.sendEmail = function(req,res,next) {
 	}
 
 	var mailOptions = {
-	    from: 'Santieherrero Node Mailer <santiemailer@gmail.com>', // sender address
-	    to: 'Santieherrero <santieherrero@gmail.com>', // list of receivers
+	    from: nconf.get('MAILFROM'), // sender address
+	    to: nconf.get('MAILTO'), // list of receivers
 	    subject: dataEmail.name + ' quiere ponerse en contacto contigo.', // Subject line
 	    text: dataEmail.message + " " + dataEmail["url_user"], // plaintext body
 	}
@@ -82,7 +82,7 @@ exports.sendEmail = function(req,res,next) {
     	res.status(400).json({message: error});
       return error;
     }    
-    // console.log(info); // TODO : Log for emails on file server;
+    // TODO : Log for emails on file server;
    	res.status(201).json({email_send: true}); 
 	});
 };
